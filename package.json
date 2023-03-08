@@ -1,16 +1,29 @@
 {
+  "name": "romashko-dev",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test:ci": "jest --ci",
+    "lint": "next lint",
+    "prettier": "pretty-quick --pattern \"**/*.*(js|jsx|ts|tsx)\" --staged",
+    "pretty-quick": "pretty-quick",
+    "pretty-quick-check": "pretty-quick --check",
+    "stylelint": "stylelint \"**/*.css\" --fix",
+    "prepare": "husky install",
+    "export": "next export",
+    "debug": "NODE_OPTIONS='--inspect' next dev"
   },
   "dependencies": {
     "next": "latest",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "classnames": "^2.3.1",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.20"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.4",
@@ -20,6 +33,23 @@
     "@types/testing-library__jest-dom": "5.14.5",
     "jest": "28.1.0",
     "jest-environment-jsdom": "28.1.0",
-    "typescript": "4.6.4"
+    "typescript": "^4.7.3",
+    "@types/react-test-renderer": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^5.27.1",
+    "eslint": "8.35.0",
+    "eslint-config-next": "^13.2.3",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-testing-library": "^5.10.2",
+    "husky": "^8.0.3",
+    "identity-obj-proxy": "^3.0.0",
+    "prettier": "^2.8.4",
+    "pretty-quick": "^3.1.3",
+    "stylelint": "^15.2.0",
+    "stylelint-config-idiomatic-order": "^9.0.0",
+    "stylelint-config-standard": "^30.0.1",
+    "stylelint-order": "^6.0.2"
+    
   }
 }

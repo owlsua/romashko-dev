@@ -1,0 +1,11 @@
+# Ignore all CSS files:
+*.css
+
+# Ignore all JSON files:
+*.json
+
+# Ignore all yml files:
+*.yml
+
+build
+out

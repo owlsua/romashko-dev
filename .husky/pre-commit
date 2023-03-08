@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npm run stylelint && npm run prettier && npm run lint && npm test a -- --watchAll=false --coverage
