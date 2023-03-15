@@ -26,7 +26,7 @@ const customJestConfig = {
   moduleNameMapper: {
     // '\\.(scss|sass|css)$': 'identity-obj-proxy',
     // Handle module aliases (this will be automatically configured for you soon)
-    '^@/components/(.*)$': '<rootDir>/components/$1',
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
 
     '^@/pages/(.*)$': '<rootDir>/pages/$1',
   },
