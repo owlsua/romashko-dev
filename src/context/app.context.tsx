@@ -1,9 +1,6 @@
 import { createContext, PropsWithChildren, useState } from 'react';
 import { useLocalObservable } from 'mobx-react-lite';
 import CommandsStore from '@/stores/commandsStore';
-import ExternalLink from '@/components/ExternalLink/ExternalLink';
-import Welcome from '@/components/Welcome/Welcome';
-import Help from '@/components/Help/Help';
 
 interface IComponents {
   [key: string]: JSX.Element | string;
