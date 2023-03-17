@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Input from '@/components/Input/Input';
 import { AppContextProvider } from '@/context/app.context';
 
