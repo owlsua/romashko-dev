@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useCallback } from 'react';
 import styles from './styles.module.css';
 
 import { AppContext } from '@/context/app.context';
@@ -13,10 +13,8 @@ const Input = ({ index }: InputProps) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [comIndex, setComIndex] = useState<number>(commandsList.length - 1);
 
-  const handlePressTab = (value: string, setValue: (value: string) => void) => {
-    if (value === '') {
-      return;
-    }
+  const onTabPress = (value: string, setValue: (value: string) => void) => {
+    if (!value) return;
     availableCommands.forEach((command: string) => {
       if (command.startsWith(value)) {
         setValue(command);
@@ -24,77 +22,79 @@ const Input = ({ index }: InputProps) => {
     });
   };
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const MIN_INDEX = 0;
-    const NO_COMMANDS = 0;
-
-    const hasCommands = commandsList.length !== NO_COMMANDS;
-    const lastIndex = commandsList.length - 1;
-
-    if (index === undefined && hasCommands) {
-      return;
+  const handleArrowUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      if (!commandsList.length) return;
+      if (!inputValue && comIndex === commandsList.length - 1) {
+        setInputValue(commandsList[comIndex]);
+      }
+      if (inputValue && comIndex > 0) {
+        setComIndex((prevIndex: number) => prevIndex - 1);
+        setInputValue(commandsList[comIndex - 1]);
+      }
     }
-    if (index === MIN_INDEX && commandsList.length > 1) {
-      return;
-    }
-    if (index !== undefined && index < lastIndex) {
-      return;
-    }
-
-    setInputValue(event.target.value);
   };
 
-  const onSubmit = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleArrowDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      if (!commandsList.length) return;
+      if (comIndex < commandsList.length - 1) {
+        setComIndex((prevIndex: number) => prevIndex + 1);
+        setInputValue(commandsList[comIndex + 1]);
+      }
+    }
+  };
+
+  const handleEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter' || event.code === '13') {
+      event.preventDefault();
+      commands.addCommand(inputValue);
+    }
+  };
+
+  const handleTab = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      onTabPress(inputValue, setInputValue);
+    }
+  };
+
+  const handleCtrlC = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'c' && event.ctrlKey) {
       event.preventDefault();
       setInputValue('');
     }
+  };
 
+  const handleCtrlL = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'l' && event.ctrlKey) {
       event.preventDefault();
-
       commands.clear();
     }
+  };
 
-    if (event.key === 'Tab') {
-      event.preventDefault();
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const MIN_INDEX = 0;
+    const NO_COMMANDS = 0;
+    const hasCommands = commandsList.length !== NO_COMMANDS;
+    const lastIndex = commandsList.length - 1;
 
-      handlePressTab(inputValue, setInputValue);
-    }
+    if (index === undefined && hasCommands) return;
+    if (index === MIN_INDEX && commandsList.length > 1) return;
+    if (index !== undefined && index < lastIndex) return;
 
-    if (event.key === 'Enter' || event.code === '13') {
-      event.preventDefault();
-      commands.addCommand(inputValue);
-      commands.getIndexOfCommand();
-    }
+    setInputValue(event.target.value);
+  };
 
-    if (event.key === 'ArrowUp') {
-      event.preventDefault();
-
-      if (!commandsList.length) {
-        return;
-      }
-
-      if (comIndex > 0) {
-        setComIndex(comIndex - 1);
-      }
-
-      setInputValue(commandsList[comIndex]);
-    }
-
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-
-      if (!commandsList.length) {
-        return;
-      }
-
-      if (comIndex < commandsList.length - 1) {
-        setComIndex(comIndex + 1);
-      }
-
-      setInputValue(commandsList[comIndex]);
-    }
+  const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    handleCtrlL(event);
+    handleCtrlC(event);
+    handleTab(event);
+    handleEnter(event);
+    handleArrowUp(event);
+    handleArrowDown(event);
   };
 
   return (
@@ -108,8 +108,9 @@ const Input = ({ index }: InputProps) => {
       autoCapitalize={'off'}
       autoCorrect={'off'}
       spellCheck={false}
-      onKeyDown={onSubmit}
+      onKeyDown={onKeyDown}
       id="commandInput"
+      data-testid="commandInput"
     />
   );
 };
