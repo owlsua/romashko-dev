@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import Home from '@/pages/index';
+import { AppContextProvider } from '@/context/app.context';
 
-describe('Home', () => {
-  it('renders a heading', () => {
-    render(<Home />);
-
-    const main = screen.getByRole('main');
-
-    expect(main).toBeInTheDocument();
-  });
+test('Home', () => {
+  render(
+    <AppContextProvider>
+      <Home />
+    </AppContextProvider>,
+  );
+  const main = screen.getByRole('main');
+  expect(main).toBeInTheDocument();
 });
