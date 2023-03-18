@@ -30,6 +30,7 @@ const customJestConfig = {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
     '^@/context/(.*)$': '<rootDir>/src/context/$1',
     '^@/stores/(.*)$': '<rootDir>/src/stores/$1',
+    '^@/helpers/(.*)$': '<rootDir>/src/helpers/$1',
     '^@/pages/(.*)$': '<rootDir>/pages/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
