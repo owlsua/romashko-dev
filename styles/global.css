@@ -28,14 +28,14 @@
   --mobile: 400px;
   --tablet: 768px;
   --desktop: 1220px;
-  --font-primary: "Montserrat", sans-serif;
+  --font-primary: 'Cascadia Code', sans-serif;
 }
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Montserrat, sans-serif;
+  font-family: var(--font-primary);
 }
 
 * {
@@ -73,6 +73,6 @@ code {
   padding: 0.75rem;
   border-radius: 5px;
   background: #FAFAFA;
-  font-family: Montserrat, sans-serif;
+  font-family: var(--font-primary);
   font-size: 1.1rem;
 }
