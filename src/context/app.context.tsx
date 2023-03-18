@@ -5,7 +5,7 @@ import CommandsStore from '@/stores/commandsStore';
 interface IComponents {
   [key: string]: JSX.Element | string;
 }
-export interface IAppContext {
+interface IAppContext {
   components: IComponents;
   commands: any;
   inputValue: string;
@@ -29,10 +29,11 @@ export const AppContextProvider = ({
 }: PropsWithChildren<any>) => {
   const [inputValue, setInputValue] = useState<string>('');
   const commands = useLocalObservable(() =>
-    CommandsStore.create({ commands: [{ value: 'about' }] }),
+    CommandsStore.create({ commands: [{ value: 'welcome' }] }),
   );
 
   const components: IComponents = {
+    welcome: 'welcome',
     help: 'help',
     about: 'about',
     github: 'github',
