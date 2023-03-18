@@ -36,3 +36,13 @@ test('renders CommandOutcome with not exist command', () => {
 
   expect(outcome).toHaveTextContent(notFound);
 });
+
+test('renders CommandOutcome with empty command', () => {
+  render(
+    <AppContextProvider value={{ components: components }}>
+      <CommandOutcome command={''} />
+    </AppContextProvider>,
+  );
+
+  expect(screen.queryByTestId('commandOutcome')).toBeNull();
+});
