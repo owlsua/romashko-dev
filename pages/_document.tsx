@@ -11,6 +11,10 @@ export default function Document() {
         ></meta>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
+          href="https://fonts.cdnfonts.com/css/cascadia-code"
+          rel="stylesheet"
+        />
+        <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin={'crossorigin'}
