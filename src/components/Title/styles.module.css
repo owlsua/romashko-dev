@@ -1,0 +1,64 @@
+.gradientText {
+  width: fit-content;
+  padding: 15px;
+  border: 2px solid #FFF;
+  margin: 10px 0;
+  animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+  background-clip: text;
+  background-color: #CA4246;
+  background-image: var(--rainbow-gradient);
+  background-repeat: repeat;
+  background-size: 100%;
+  font-family: 'VT323', monospace;
+  font-size: 6rem; 
+  text-align: start;
+  -webkit-text-fill-color: transparent;
+  word-break: break-all;
+}
+  
+.gradientText:hover{
+  animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+}
+
+.gradientText small {
+  font-size: 3rem;
+}
+
+@keyframes rainbow-text-simple-animation-rev {
+  0% {
+    background-size: 650%;
+  }
+
+  40% {
+    background-size: 650%;
+  }
+
+  100% {
+    background-size: 100%;
+  }
+}
+
+@keyframes rainbow-text-simple-animation {
+  0% {
+    background-size: 100%;
+  }
+
+  80% {
+    background-size: 650%;
+  }
+
+  100% {
+    background-size: 650%;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .gradientText {
+    padding: 30px;
+    font-size: 8rem;
+  }
+
+  .gradientText span {
+    font-size: 4rem;
+  }
+}
