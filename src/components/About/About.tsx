@@ -7,10 +7,17 @@ interface AboutProps {
 
 const About = ({ content }: AboutProps) => {
   return (
-    <div className={styles.aboutWrapper}>
-      <p className={cx(styles.paragraph, styles.greet)}>Hello and welcome!</p>
-      <p className={styles.paragraph}>{content}</p>
-      <p className={cx(styles.paragraph, styles.help)}>
+    <div className={styles.aboutWrapper} data-testid="about">
+      <p
+        className={cx(styles.paragraph, styles.greet)}
+        data-testid="aboutHello"
+      >
+        Hello and welcome!
+      </p>
+      <p className={styles.paragraph} data-testid="aboutContent">
+        {content}
+      </p>
+      <p className={cx(styles.paragraph, styles.help)} data-testid="aboutHelp">
         Type &apos;help&apos; to see list of available commands.
       </p>
     </div>
