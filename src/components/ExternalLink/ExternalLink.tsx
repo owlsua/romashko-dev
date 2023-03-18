@@ -7,7 +7,7 @@ interface ExternalLinkProps {
 
 const ExternalLink = ({ link, message }: ExternalLinkProps) => {
   openLink(link);
-  return <>{message}</>;
+  return <p data-testid="externalLink">{message}</p>;
 };
 
 export default ExternalLink;
