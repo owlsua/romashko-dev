@@ -9,7 +9,7 @@ const title = ['Romashko', '.dev'];
 
 const Welcome = () => {
   return (
-    <div className={styles.welcome}>
+    <div className={styles.welcome} data-testid="welcome">
       <Title title={title} />
       <About content={aboutContent} />
     </div>
