@@ -27,9 +27,9 @@ interface HotKeyListProps {
 
 const CommandList = ({ commands }: CommandListProps) => {
   return (
-    <ul className={styles.commandList}>
+    <ul className={styles.commandList} data-testid="commandList">
       {commands.map((command: string, index: number) => (
-        <li key={command} className={styles.command}>
+        <li key={command} className={styles.command} data-testid="commandItem">
           {command + (index !== commands.length - 1 ? ',' : '')}
         </li>
       ))}
@@ -39,9 +39,9 @@ const CommandList = ({ commands }: CommandListProps) => {
 
 const HotKeyList = ({ hotKeys }: HotKeyListProps) => {
   return (
-    <ul className={styles.hotKeysList}>
+    <ul className={styles.hotKeysList} data-testid="hotKeyList">
       {hotKeys.map((hotKey) => (
-        <li key={hotKey.key} className={styles.hotKey}>
+        <li key={hotKey.key} className={styles.hotKey} data-testid="hotKeyItem">
           <span className={styles.key}>{`[${hotKey.key}]`}</span>
           <span className={styles.description}>{hotKey.description}</span>
         </li>
@@ -53,8 +53,10 @@ const HotKeyList = ({ hotKeys }: HotKeyListProps) => {
 const Help = () => {
   const { availableCommands } = useContext(AppContext);
   return (
-    <div className={styles.helpWrapper}>
-      <h3 className={styles.helpTitle}>Available commands:</h3>
+    <div className={styles.helpWrapper} data-testid="help">
+      <h3 className={styles.helpTitle} data-testid="helpTitle">
+        Available commands:
+      </h3>
       <CommandList commands={availableCommands} />
       <HotKeyList hotKeys={hotKeys} />
     </div>
