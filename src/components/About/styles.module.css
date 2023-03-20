@@ -1,0 +1,21 @@
+.aboutWrapper {
+  max-width: 500px;
+  padding: 15px;
+  border: 2px solid #F18F43;
+}
+
+.paragraph {
+  max-width: 500px;
+  margin-bottom: 5px;
+  color: var(--yellow-light);
+  text-align: start;
+}
+
+.greet {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.help {
+  color: var(--green);
+}

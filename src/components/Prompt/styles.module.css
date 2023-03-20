@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.label {
+  display: flex;
+  min-width: max-content;
+}
+
+.userName {
+  color: var(--orange);
+} 
+
+.atSign {
+  color: var(--brown-light);
+}
+
+.productName {
+  color: var(--green-light);
+}
+
+.last {
+  color: var(--brown-light);
+}

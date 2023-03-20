@@ -17,13 +17,15 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
+      "@/components/*": ["src/components/*"],
       "@/pages/*": ["pages/*"],
       "@/styles/*": ["styles/*"],
       "@/interfaces/*": ["interfaces/*"],
       "@/utils/*": ["utils/*"],
-      "@/hooks/*": ["hooks/*"],
-      "@/context/*": ["context/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/context/*": ["src/context/*"],
+      "@/stores/*": ["src/stores/*"],
+      "@/helpers/*": ["src/helpers/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "types.d.ts", "__tests__/snapshot.jsx"],

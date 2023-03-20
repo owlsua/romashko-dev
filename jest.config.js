@@ -19,15 +19,18 @@ const customJestConfig = {
   coveragePathIgnorePatterns: [
     'node_modules',
     'test-config',
-    '<rootDir>/hooks/',
-    '<rootDir>/utils/',
+    '<rootDir>/src/hooks/',
+    '<rootDir>/src/utils/',
+    '<rootDir>/src/stores/',
   ],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     // '\\.(scss|sass|css)$': 'identity-obj-proxy',
     // Handle module aliases (this will be automatically configured for you soon)
-    '^@/components/(.*)$': '<rootDir>/components/$1',
-
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/context/(.*)$': '<rootDir>/src/context/$1',
+    '^@/stores/(.*)$': '<rootDir>/src/stores/$1',
+    '^@/helpers/(.*)$': '<rootDir>/src/helpers/$1',
     '^@/pages/(.*)$': '<rootDir>/pages/$1',
   },
   testEnvironment: 'jest-environment-jsdom',

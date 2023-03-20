@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
+import MainFlow from '@/components/MainFlow/MainFlow';
 
 const Home: NextPage = () => {
   return (
@@ -9,7 +10,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>Main</main>
+      <main>
+        <MainFlow />
+      </main>
     </>
   );
 };
