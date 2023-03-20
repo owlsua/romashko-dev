@@ -14,7 +14,7 @@ const nextConfig = {
   },
   optimizeFonts: false,
   distDir: 'build',
-  assetPrefix: '.',
+  // assetPrefix: '.',
   reactStrictMode: true,
 
   async headers() {
