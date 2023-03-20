@@ -1,13 +1,14 @@
+import React, { useContext } from 'react';
 import Title from '@/components/Title/Title';
 import About from '@/components/About/About';
+import { AppContext } from '@/context/app.context';
 
 import styles from './styles.module.css';
 
-const aboutContent =
-  "I'm Alexander Romashko and this is my personal website where you can explore my projects and learn more about me by interacting with the app using a command-line interface.";
 const title = ['Romashko', '.dev'];
 
 const Welcome = () => {
+  const { aboutContent } = useContext(AppContext);
   return (
     <div className={styles.welcome} data-testid="welcome">
       <Title title={title} />
