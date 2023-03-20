@@ -1,4 +1,4 @@
-import React, { useContext, useState, useCallback } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './styles.module.css';
 
 import { AppContext } from '@/context/app.context';
