@@ -6,6 +6,7 @@
   border: none;
   background: none;
   color: var(--yellow-light);
+  font-family: var(--font-primary);
   font-size: 1rem;
   outline: none;
 }
