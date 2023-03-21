@@ -5,6 +5,33 @@ import { AppContextProvider } from '@/context/app.context';
 const getCommandsMock = () => {
   return ['one', 'two', 'three'];
 };
+const availableCommandsMock = ['one', 'two', 'three'];
+const addCommandMock = jest.fn();
+const clearCommandsMock = jest.fn();
+
+const contextValueMock = {
+  commands: {
+    addCommand: addCommandMock,
+    getCommands: getCommandsMock,
+    clear: clearCommandsMock,
+    commands: [{ value: 'test' }],
+  },
+  availableCommands: availableCommandsMock,
+  aboutContent: '',
+  components: {},
+};
+
+const contextValueEmptyHystoryMock = {
+  commands: {
+    addCommand: addCommandMock,
+    getCommands: () => [],
+    clear: clearCommandsMock,
+    commands: [{ value: 'test' }],
+  },
+  availableCommands: [],
+  aboutContent: '',
+  components: {},
+};
 
 test('renders Input', () => {
   render(
@@ -18,9 +45,9 @@ test('renders Input', () => {
 
   expect(input).toHaveAttribute('id', 'commandInput');
   expect(input).toHaveAttribute('type', 'text');
-  expect(input).toHaveAttribute('autoComplete', 'off');
-  expect(input).toHaveAttribute('autoCapitalize', 'off');
-  expect(input).toHaveAttribute('autoCorrect', 'off');
+  expect(input).toHaveAttribute('autoComplete', 'none');
+  expect(input).toHaveAttribute('autoCapitalize', 'none');
+  expect(input).toHaveAttribute('autoCorrect', 'none');
   expect(input).toHaveAttribute('spellCheck', 'false');
 });
 
@@ -41,14 +68,8 @@ test('updates input value on change', () => {
 });
 
 test('adds command on Enter key press', () => {
-  const addCommandMock = jest.fn();
-
   render(
-    <AppContextProvider
-      value={{
-        commands: { addCommand: addCommandMock, getCommands: getCommandsMock },
-      }}
-    >
+    <AppContextProvider value={contextValueMock}>
       <Input index={3} />
     </AppContextProvider>,
   );
@@ -86,13 +107,8 @@ test('clears input on Ctrl+C key press', () => {
 });
 
 test('clears commands on Ctrl+L key press', () => {
-  const clearCommandsMock = jest.fn();
   render(
-    <AppContextProvider
-      value={{
-        commands: { clear: clearCommandsMock, getCommands: getCommandsMock },
-      }}
-    >
+    <AppContextProvider value={contextValueMock}>
       <Input index={0} />
     </AppContextProvider>,
   );
@@ -105,19 +121,16 @@ test('clears commands on Ctrl+L key press', () => {
 });
 
 test('updates input value on Tab key press', () => {
-  const availableCommands = ['one', 'two', 'three'];
   render(
-    <AppContextProvider
-      value={{
-        availableCommands,
-        commands: { getCommands: getCommandsMock },
-      }}
-    >
+    <AppContextProvider value={contextValueMock}>
       <Input index={3} />
     </AppContextProvider>,
   );
   const input = screen.getByTestId('commandInput');
   expect(input).toBeInTheDocument();
+
+  fireEvent.keyDown(input, { key: 'Tab' });
+  expect(input).toHaveValue('');
 
   fireEvent.change(input, { target: { value: 't' } });
   expect(input).toHaveValue('t');
@@ -126,13 +139,24 @@ test('updates input value on Tab key press', () => {
   expect(input).toHaveValue('three');
 });
 
-test('updates input value on ArrowUp key press', () => {
+test('updates input value on ArrowUp key press with empty history', () => {
   render(
-    <AppContextProvider
-      value={{
-        commands: { getCommands: getCommandsMock },
-      }}
-    >
+    <AppContextProvider value={contextValueEmptyHystoryMock}>
+      <Input index={3} />
+    </AppContextProvider>,
+  );
+  const input = screen.getByTestId('commandInput');
+  expect(input).toBeInTheDocument();
+
+  expect(input).toHaveValue('');
+
+  fireEvent.keyDown(input, { key: 'ArrowUp' });
+  expect(input).toHaveValue('');
+});
+
+test('updates input value on ArrowUp key press with history', () => {
+  render(
+    <AppContextProvider value={contextValueMock}>
       <Input index={3} />
     </AppContextProvider>,
   );
@@ -146,13 +170,22 @@ test('updates input value on ArrowUp key press', () => {
   expect(input).toHaveValue('two');
 });
 
-test('updates input value on ArrowDown key press', () => {
+test('updates input value on ArrowDown key press without history', () => {
   render(
-    <AppContextProvider
-      value={{
-        commands: { getCommands: getCommandsMock },
-      }}
-    >
+    <AppContextProvider value={contextValueEmptyHystoryMock}>
+      <Input index={3} />
+    </AppContextProvider>,
+  );
+  const input = screen.getByTestId('commandInput');
+  expect(input).toBeInTheDocument();
+
+  fireEvent.keyDown(input, { key: 'ArrowDown' });
+  expect(input).toHaveValue('');
+});
+
+test('updates input value on ArrowDown key press with history', () => {
+  render(
+    <AppContextProvider value={contextValueMock}>
       <Input index={3} />
     </AppContextProvider>,
   );
@@ -173,4 +206,46 @@ test('updates input value on ArrowDown key press', () => {
 
   fireEvent.keyDown(input, { key: 'ArrowDown' });
   expect(input).toHaveValue('three');
+});
+
+test('updates input value without index', () => {
+  render(
+    <AppContextProvider value={contextValueMock}>
+      <Input index={undefined} />
+    </AppContextProvider>,
+  );
+  const input = screen.getByTestId('commandInput');
+  expect(input).toBeInTheDocument();
+
+  expect(input).toHaveValue('');
+  fireEvent.change(input, { target: { value: 't' } });
+  expect(input).toHaveValue('');
+});
+
+test('updates input value with 0 index and history', () => {
+  render(
+    <AppContextProvider value={contextValueMock}>
+      <Input index={0} />
+    </AppContextProvider>,
+  );
+  const input = screen.getByTestId('commandInput');
+  expect(input).toBeInTheDocument();
+
+  expect(input).toHaveValue('');
+  fireEvent.change(input, { target: { value: 't' } });
+  expect(input).toHaveValue('');
+});
+
+test('updates input value with non-last index and history', () => {
+  render(
+    <AppContextProvider value={contextValueMock}>
+      <Input index={1} />
+    </AppContextProvider>,
+  );
+  const input = screen.getByTestId('commandInput');
+  expect(input).toBeInTheDocument();
+
+  expect(input).toHaveValue('');
+  fireEvent.change(input, { target: { value: 't' } });
+  expect(input).toHaveValue('');
 });
