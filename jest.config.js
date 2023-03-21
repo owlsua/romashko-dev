@@ -22,6 +22,7 @@ const customJestConfig = {
     '<rootDir>/src/hooks/',
     '<rootDir>/src/utils/',
     '<rootDir>/src/stores/',
+    '<rootDir>/src/context/',
   ],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
