@@ -2,31 +2,28 @@ import { render, screen } from '@testing-library/react';
 import MainFlow from '@/components/MainFlow/MainFlow';
 import { AppContextProvider } from '@/context/app.context';
 
-const commands = [
-  {
-    value: 'welcome',
-  },
-];
-
-const components = {
-  welcome: 'welcome',
-};
-
 const getCommandsMock = () => {
-  return ['welcome'];
+  return ['one', 'two', 'three'];
+};
+const availableCommandsMock = ['welcome'];
+const addCommandMock = jest.fn();
+const clearCommandsMock = jest.fn();
+
+const contextValueMock = {
+  commands: {
+    addCommand: addCommandMock,
+    getCommands: getCommandsMock,
+    clear: clearCommandsMock,
+    commands: [{ value: 'welcome' }],
+  },
+  availableCommands: availableCommandsMock,
+  aboutContent: '',
+  components: { welcome: 'welcome' },
 };
 
 test('renders Main Flow', () => {
   render(
-    <AppContextProvider
-      value={{
-        commands: {
-          commands: commands,
-          getCommands: getCommandsMock,
-        },
-        components: components,
-      }}
-    >
+    <AppContextProvider value={contextValueMock}>
       <MainFlow />
     </AppContextProvider>,
   );
