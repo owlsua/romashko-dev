@@ -13,6 +13,9 @@ const Input = ({ index }: InputProps) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [comIndex, setComIndex] = useState<number>(commandsList.length - 1);
 
+  const isInputDisabled =
+    commandsList.length && index !== commandsList.length - 1 ? true : false;
+
   const onTabPress = (value: string, setValue: (value: string) => void) => {
     if (!value) return;
     availableCommands.forEach((command: string) => {
@@ -104,11 +107,12 @@ const Input = ({ index }: InputProps) => {
       className={styles.input}
       type="text"
       autoFocus
-      autoComplete={'off'}
-      autoCapitalize={'off'}
-      autoCorrect={'off'}
+      autoComplete={'none'}
+      autoCapitalize={'none'}
+      autoCorrect={'none'}
       spellCheck={false}
       onKeyDown={onKeyDown}
+      disabled={isInputDisabled}
       id="commandInput"
       data-testid="commandInput"
     />

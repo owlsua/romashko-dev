@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useState } from 'react';
+import { createContext, useState } from 'react';
 import { useLocalObservable } from 'mobx-react-lite';
 import CommandsStore from '@/stores/commandsStore';
 
@@ -10,21 +10,34 @@ import ExternalLink from '@/components/ExternalLink/ExternalLink';
 interface IComponents {
   [key: string]: JSX.Element | string;
 }
+
+interface AppContextProviderProps {
+  value?: IAppContext;
+  children: JSX.Element;
+}
+
+interface CommandsTypes {
+  getCommands: () => string[];
+  addCommand: (command: string) => void;
+  commands: { value: string }[];
+  clear: () => void;
+}
 interface IAppContext {
   components: IComponents;
-  commands: any;
-  inputValue: string;
+  commands: CommandsTypes;
   availableCommands: string[];
-  setInputValue: (inputValue: string) => void;
   aboutContent: string;
 }
 
 const defaultValues: IAppContext = {
   components: {},
-  commands: {},
+  commands: {
+    getCommands: () => [],
+    addCommand: () => {},
+    commands: [],
+    clear: () => {},
+  },
   availableCommands: [],
-  inputValue: '',
-  setInputValue: () => {},
   aboutContent: '',
 };
 
@@ -33,7 +46,7 @@ export const AppContext = createContext(defaultValues);
 export const AppContextProvider = ({
   value: propValue,
   children,
-}: PropsWithChildren<any>) => {
+}: AppContextProviderProps) => {
   const [inputValue, setInputValue] = useState<string>('');
   const commands = useLocalObservable(() =>
     CommandsStore.create({ commands: [{ value: 'welcome' }] }),
