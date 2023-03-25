@@ -60,6 +60,8 @@ export const AppContextProvider = ({
   const linkedinMessage = 'opening LinkedIn...';
   const emailLink = 'mailto:allatsnow@gmail.com';
   const emailMessage = 'opening email...';
+  const repoLink = 'https://github.com/owlsua/romashko-dev';
+  const repoMessage = 'opening repo...';
 
   const components: IComponents = {
     welcome: <Welcome />,
@@ -68,6 +70,7 @@ export const AppContextProvider = ({
     github: <ExternalLink link={githubLink} message={githubMessage} />,
     linkedin: <ExternalLink link={linkedinLink} message={linkedinMessage} />,
     email: <ExternalLink link={emailLink} message={emailMessage} />,
+    repo: <ExternalLink link={repoLink} message={repoMessage} />,
     // add more commands here
   };
 
