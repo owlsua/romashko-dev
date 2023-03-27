@@ -45,9 +45,9 @@ test('renders Input', () => {
 
   expect(input).toHaveAttribute('id', 'commandInput');
   expect(input).toHaveAttribute('type', 'text');
-  expect(input).toHaveAttribute('autoComplete', 'none');
-  expect(input).toHaveAttribute('autoCapitalize', 'none');
-  expect(input).toHaveAttribute('autoCorrect', 'none');
+  expect(input).toHaveAttribute('autoComplete', 'off');
+  expect(input).toHaveAttribute('autoCapitalize', 'off');
+  expect(input).toHaveAttribute('autoCorrect', 'off');
   expect(input).toHaveAttribute('spellCheck', 'false');
 });
 
