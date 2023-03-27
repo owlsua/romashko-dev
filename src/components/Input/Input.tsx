@@ -107,9 +107,9 @@ const Input = ({ index }: InputProps) => {
       className={styles.input}
       type="text"
       autoFocus
-      autoComplete={'none'}
-      autoCapitalize={'none'}
-      autoCorrect={'none'}
+      autoComplete={'off'}
+      autoCapitalize={'off'}
+      autoCorrect={'off'}
       spellCheck={false}
       onKeyDown={onKeyDown}
       disabled={isInputDisabled}

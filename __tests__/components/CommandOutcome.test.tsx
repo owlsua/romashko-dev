@@ -5,13 +5,29 @@ import { AppContextProvider } from '@/context/app.context';
 // const existCommand = { value: 'welcome' };
 const existCommand = 'welcome';
 const notExistCommand = 'notExist';
-const components = {
-  welcome: 'welcome',
+
+const getCommandsMock = () => {
+  return ['one', 'two', 'three'];
+};
+const availableCommandsMock = ['welcome'];
+const addCommandMock = jest.fn();
+const clearCommandsMock = jest.fn();
+
+const contextValueMock = {
+  commands: {
+    addCommand: addCommandMock,
+    getCommands: getCommandsMock,
+    clear: clearCommandsMock,
+    commands: [{ value: 'welcome' }],
+  },
+  availableCommands: availableCommandsMock,
+  aboutContent: '',
+  components: { welcome: 'welcome' },
 };
 
 test('renders CommandOutcome', () => {
   render(
-    <AppContextProvider value={{ components: components }}>
+    <AppContextProvider value={contextValueMock}>
       <CommandOutcome command={existCommand} />
     </AppContextProvider>,
   );
@@ -24,7 +40,7 @@ test('renders CommandOutcome', () => {
 
 test('renders CommandOutcome with not exist command', () => {
   render(
-    <AppContextProvider value={{ components: components }}>
+    <AppContextProvider value={contextValueMock}>
       <CommandOutcome command={notExistCommand} />
     </AppContextProvider>,
   );
@@ -39,7 +55,7 @@ test('renders CommandOutcome with not exist command', () => {
 
 test('renders CommandOutcome with empty command', () => {
   render(
-    <AppContextProvider value={{ components: components }}>
+    <AppContextProvider value={contextValueMock}>
       <CommandOutcome command={''} />
     </AppContextProvider>,
   );
