@@ -58,6 +58,8 @@ export const AppContextProvider = ({
   const githubMessage = 'opening Github...';
   const linkedinLink = 'https://www.linkedin.com/in/owlsua/';
   const linkedinMessage = 'opening LinkedIn...';
+  const telegramLink = 'https://t.me/owlsua/';
+  const telegramMessage = 'opening Telegram...';
   const emailLink = 'mailto:allatsnow@gmail.com';
   const emailMessage = 'opening email...';
   const repoLink = 'https://github.com/owlsua/romashko-dev';
@@ -72,6 +74,7 @@ export const AppContextProvider = ({
     about: <About content={aboutContent} />,
     github: <ExternalLink link={githubLink} message={githubMessage} />,
     linkedin: <ExternalLink link={linkedinLink} message={linkedinMessage} />,
+    telegram: <ExternalLink link={telegramLink} message={telegramMessage} />,
     email: <ExternalLink link={emailLink} message={emailMessage} />,
     repo: <ExternalLink link={repoLink} message={repoMessage} />,
     cv: <ExternalLink link={cvLink} message={cvMessage} />,
