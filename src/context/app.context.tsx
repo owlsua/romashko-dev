@@ -65,7 +65,7 @@ export const AppContextProvider = ({
   const repoLink = 'https://github.com/owlsua/romashko-dev';
   const repoMessage = 'opening repo...';
   const cvLink =
-    'https://drive.google.com/file/d/1WM-h4cGX1uCzkYmpFiZsIG9gSIKseo2Q/view';
+    'https://drive.google.com/file/d/1XmucbkMhxTUZGvib9kT190q6OKHq31IE/view';
   const cvMessage = 'opening cv...';
 
   const components: IComponents = {
