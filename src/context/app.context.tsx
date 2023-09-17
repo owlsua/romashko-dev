@@ -6,6 +6,7 @@ import Welcome from '@/components/Welcome/Welcome';
 import Help from '@/components/Help/Help';
 import About from '@/components/About/About';
 import ExternalLink from '@/components/ExternalLink/ExternalLink';
+import Skills from '@/components/Skills/Skills';
 
 interface IComponents {
   [key: string]: JSX.Element | string;
@@ -52,21 +53,21 @@ export const AppContextProvider = ({
     CommandsStore.create({ commands: [{ value: 'welcome' }] }),
   );
 
-  const aboutContent =
-    "I'm Alexander Romashko and this is my personal website where you can explore my projects and learn more about me by interacting with the app using a command-line interface.";
-  const githubLink = 'https://github.com/owlsua';
+  const aboutContent = process.env.NEXT_PUBLIC_ABOUT || '';
+  const githubLink = process.env.NEXT_PUBLIC_GITHUB_LINK || '';
   const githubMessage = 'opening Github...';
-  const linkedinLink = 'https://www.linkedin.com/in/owlsua/';
+  const linkedinLink = process.env.NEXT_PUBLIC_LINKEDIN_LINK || '';
   const linkedinMessage = 'opening LinkedIn...';
-  const telegramLink = 'https://t.me/owlsua/';
+  const telegramLink = process.env.NEXT_PUBLIC_TELEGRAM_LINK || '';
   const telegramMessage = 'opening Telegram...';
-  const emailLink = 'mailto:allatsnow@gmail.com';
+  const emailLink = process.env.NEXT_PUBLIC_EMAIL_LINK || '';
   const emailMessage = 'opening email...';
-  const repoLink = 'https://github.com/owlsua/romashko-dev';
+  const repoLink = process.env.NEXT_PUBLIC_REPO_LINK || '';
   const repoMessage = 'opening repo...';
-  const cvLink =
-    'https://drive.google.com/file/d/1XmucbkMhxTUZGvib9kT190q6OKHq31IE/view';
+  const cvLink = process.env.NEXT_PUBLIC_CV_LINK || '';
   const cvMessage = 'opening cv...';
+  const skillsRow = process.env.NEXT_PUBLIC_SKILLS || '';
+  const skillsArray = skillsRow.split(', ');
 
   const components: IComponents = {
     welcome: <Welcome />,
@@ -78,6 +79,7 @@ export const AppContextProvider = ({
     email: <ExternalLink link={emailLink} message={emailMessage} />,
     repo: <ExternalLink link={repoLink} message={repoMessage} />,
     cv: <ExternalLink link={cvLink} message={cvMessage} />,
+    skills: <Skills skills={skillsArray} />,
     // add more commands here
   };
 
