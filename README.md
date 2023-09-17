@@ -25,6 +25,13 @@ Install dependencies
 npm install
 ```
 
+Setup environment variables
+
+```
+Create `.env.local` and configure all the variables from `.env` for your environment.
+```
+
+
 Start the server
 
 ```bash
