@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Welcome from '@/components/Welcome/Welcome';
+import '@testing-library/jest-dom';
 
 test('renders Title', () => {
   render(<Welcome />);

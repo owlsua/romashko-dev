@@ -17,6 +17,7 @@ export default function Document() {
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
+          // @ts-expect-error - crossorigin is not in the link element type
           crossOrigin={'crossorigin'}
         />
         <link

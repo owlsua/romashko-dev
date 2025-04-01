@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, JSX, useState } from 'react';
 import { useLocalObservable } from 'mobx-react-lite';
 import CommandsStore from '@/stores/commandsStore';
 
