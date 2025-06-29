@@ -25,6 +25,7 @@ jobs:
           eslint: true
           prettier: true
           stylelint: true
+          stylelint_extensions: 'css,scss'
 
   test-run:
     name: Unit tests
@@ -43,8 +44,5 @@ jobs:
       - name: Install dependencies
         run: npm i
       - run: npm run test:ci
-
       - name: Build
         run: npm run build --if-present
-
- 
