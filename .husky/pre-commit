@@ -1,1 +1,1 @@
-npm run stylelint && npm run prettier && npm run lint && npm test a -- --watchAll=false --coverage
+npm run stylelint && npm run prettier && npm run lint && npm run test:ci

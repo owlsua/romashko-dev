@@ -5,10 +5,6 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta name="Romashko" content="Romashko - web developer" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1"
-        ></meta>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           href="https://fonts.cdnfonts.com/css/cascadia-code"
