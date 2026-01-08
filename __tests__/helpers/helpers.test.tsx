@@ -3,15 +3,8 @@ import { openLink } from '@/helpers/helpers';
 test('open link', () => {
   // Setup
   const mockedOpen = jest.fn();
-  const mockWindow = Object.create(window);
-  Object.defineProperty(mockWindow, 'open', { value: mockedOpen });
-  const windowSpy = jest.spyOn(global, 'window', 'get');
-  windowSpy.mockImplementation(() => mockWindow);
-
-  // Tests
+  jest.spyOn(window, 'open').mockImplementation(mockedOpen);
   openLink('link');
-  expect(mockedOpen).toBeCalled();
-
-  // Cleanup
-  windowSpy.mockRestore();
+  expect(mockedOpen).toHaveBeenCalled();
+  jest.restoreAllMocks();
 });

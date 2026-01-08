@@ -3,10 +3,7 @@ import ExternalLink from '@/components/ExternalLink/ExternalLink';
 
 test('renders External Link', () => {
   const mockedOpen = jest.fn();
-  const mockWindow = Object.create(window);
-  Object.defineProperty(mockWindow, 'open', { value: mockedOpen });
-  const windowSpy = jest.spyOn(global, 'window', 'get');
-  windowSpy.mockImplementation(() => mockWindow);
+  jest.spyOn(window, 'open').mockImplementation(mockedOpen);
 
   const link = 'https://romashko.dev';
   const message = 'opening...';
@@ -14,10 +11,7 @@ test('renders External Link', () => {
 
   const externalLink = screen.getByTestId('externalLink');
   expect(externalLink).toBeInTheDocument();
-
   expect(externalLink).toHaveTextContent(message);
-
-  expect(mockedOpen).toBeCalled();
-
-  windowSpy.mockRestore();
+  expect(mockedOpen).toHaveBeenCalled();
+  jest.restoreAllMocks();
 });
