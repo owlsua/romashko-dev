@@ -13,9 +13,11 @@ const useIsInViewport = (ref) => {
   );
 
   useEffect(() => {
-    setTimeout(() => {
-      ref.current && observer.observe(ref.current);
-    }, 500);
+    if (observer && ref.current) {
+      setTimeout(() => {
+        observer.observe(ref.current);
+      }, 500);
+    }
 
     return () => {
       observer.disconnect();
