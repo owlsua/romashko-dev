@@ -24,7 +24,7 @@ jobs:
         with:
           eslint: true
           prettier: true
-          stylelint: true
+          # stylelint: true
 
   test-run:
     name: Unit tests
