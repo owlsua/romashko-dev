@@ -25,7 +25,6 @@ jobs:
           eslint: true
           prettier: true
           stylelint: true
-          stylelint_extensions: 'css,scss'
 
   test-run:
     name: Unit tests
