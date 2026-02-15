@@ -7,6 +7,7 @@ import Help from '@/components/Help/Help';
 import About from '@/components/About/About';
 import ExternalLink from '@/components/ExternalLink/ExternalLink';
 import Skills from '@/components/Skills/Skills';
+import Weather from '@/components/Weather/Weather';
 
 interface IComponents {
   [key: string]: JSX.Element | string;
@@ -80,6 +81,7 @@ export const AppContextProvider = ({
     repo: <ExternalLink link={repoLink} message={repoMessage} />,
     cv: <ExternalLink link={cvLink} message={cvMessage} />,
     skills: <Skills skills={skillsArray} />,
+    weather: <Weather />,
     // add more commands here
   };
 
