@@ -27,15 +27,39 @@ npm install
 
 Setup environment variables
 
+```bash
+cp .env.example .env.local
 ```
-Create `.env.local` and configure all the variables from `.env` for your environment.
-```
+
+Update values in `.env.local`.
+
+- Public variables (`NEXT_PUBLIC_*`) are used by UI content and external links.
+- `OPENWEATHER_API_KEY` is server-side only and is used by the weather API route.
 
 
 Start the server
 
 ```bash
 npm run dev
+```
+
+## Weather API route
+
+The project includes a server-side proxy endpoint: `/api/weather`.
+
+- Supports city query: `/api/weather?q=Kyiv`
+- Supports coordinates query: `/api/weather?lat=50.45&lon=30.52`
+- Validates coordinates and request method
+- Uses in-memory caching for 5 minutes
+- Keeps `OPENWEATHER_API_KEY` hidden from the browser
+
+## Scripts
+
+```bash
+npm run dev       # run app locally
+npm run test:ci   # run tests once
+npm run lint      # run eslint
+npm run build     # production build
 ```
 
 ## Contributing
