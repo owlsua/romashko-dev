@@ -8,7 +8,7 @@ interface WeatherProps {
 
 export default function Weather({ city }: WeatherProps) {
   const id = useId();
-  const { getWeather, fetchWeatherByCity, defaultKey } =
+  const { getWeather, fetchWeatherByCity, fetchWeatherByCoords, defaultKey } =
     useContext(WeatherContext);
 
   const key = city ? `city-${id}` : defaultKey;
@@ -17,10 +17,39 @@ export default function Weather({ city }: WeatherProps) {
   useEffect(() => {
     if (city) {
       fetchWeatherByCity(key, city);
+      return;
     }
+
+    const existing = getWeather(defaultKey);
+    if (existing.data !== null || existing.loading || existing.error !== null)
+      return;
+
+    const secure =
+      window.isSecureContext ||
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1';
+
+    if (secure && 'geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) =>
+          fetchWeatherByCoords(
+            defaultKey,
+            pos.coords.latitude,
+            pos.coords.longitude,
+          ),
+        () => fetchWeatherByCity(defaultKey, 'Kyiv'),
+      );
+    } else {
+      fetchWeatherByCity(defaultKey, 'Kyiv');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [city, key, fetchWeatherByCity]);
 
-  if (loading) {
+  if (error) {
+    return <div className={styles.weather}>Error: {error}</div>;
+  }
+
+  if (!weather) {
     return (
       <div className={styles.weather}>
         <div className={styles.loading}>
@@ -36,14 +65,6 @@ export default function Weather({ city }: WeatherProps) {
         </div>
       </div>
     );
-  }
-
-  if (error) {
-    return <div className={styles.weather}>Error: {error}</div>;
-  }
-
-  if (!weather) {
-    return null;
   }
 
   return (
