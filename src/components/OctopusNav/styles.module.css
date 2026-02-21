@@ -1,0 +1,137 @@
+.wrapper {
+  position: relative;
+  z-index: 1;
+  width: 350px;
+  max-width: 90vw;
+  animation: drop-in 3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-120%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (width >= 768px) {
+  .wrapper {
+    width: 500px;
+  }
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.label {
+  position: absolute;
+  padding: 4px 10px;
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 3px;
+  backdrop-filter: blur(4px);
+  background: rgb(9 10 15 / 60%);
+  color: var(--green);
+  cursor: pointer;
+  font-family: 'VT323', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.label:hover,
+.labelHovered {
+  border-color: var(--green);
+  background: rgb(78 205 196 / 15%);
+  box-shadow: 0 0 8px rgb(78 205 196 / 30%);
+  color: #fff;
+}
+
+/* ── Tentacle label overlays ── */
+.tentacleOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+@keyframes label-wiggle-l {
+  0%, 100% { transform: rotate(0); }
+  50% { transform: rotate(-3deg); }
+}
+
+@keyframes label-wiggle-r {
+  0%, 100% { transform: rotate(0); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes label-wiggle-bl {
+  0%, 100% { transform: rotate(0); }
+  40% { transform: rotate(-2.5deg); }
+  80% { transform: rotate(1.5deg); }
+}
+
+@keyframes label-wiggle-br {
+  0%, 100% { transform: rotate(0); }
+  40% { transform: rotate(2.5deg); }
+  80% { transform: rotate(-1.5deg); }
+}
+
+@keyframes label-bob-l {
+  0%, 100% { transform: rotate(0); }
+  50% { transform: rotate(-2deg); }
+}
+
+@keyframes label-bob-r {
+  0%, 100% { transform: rotate(0); }
+  50% { transform: rotate(2deg); }
+}
+
+.tentacleLeg1 {
+  animation: label-wiggle-l 3s ease-in-out infinite;
+  transform-origin: 34.09% 38.89%;
+}
+
+.tentacleLeg2 {
+  animation: label-wiggle-bl 3.8s ease-in-out 0.1s infinite;
+  transform-origin: 34.09% 47.22%;
+}
+
+.tentacleLeg3 {
+  animation: label-wiggle-bl 3.5s ease-in-out infinite;
+  transform-origin: 36.36% 52.78%;
+}
+
+.tentacleLeg4 {
+  animation: label-bob-l 2.8s ease-in-out 0.2s infinite;
+  transform-origin: 43.18% 52.78%;
+}
+
+.tentacleLeg5 {
+  animation: label-bob-r 2.8s ease-in-out 0.4s infinite;
+  transform-origin: 56.82% 52.78%;
+}
+
+.tentacleLeg6 {
+  animation: label-wiggle-br 3.5s ease-in-out 0.3s infinite;
+  transform-origin: 63.64% 52.78%;
+}
+
+.tentacleLeg7 {
+  animation: label-wiggle-br 3.8s ease-in-out 0.5s infinite;
+  transform-origin: 65.91% 47.22%;
+}
+
+.tentacleLeg8 {
+  animation: label-wiggle-r 3s ease-in-out infinite;
+  transform-origin: 65.91% 38.89%;
+}
+
