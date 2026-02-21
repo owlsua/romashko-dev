@@ -13,7 +13,7 @@ import type {
   AppContextProviderProps,
   IAppContext,
   IComponents,
-} from '@/interfaces/app-context.interface';
+} from 'src/interfaces/app-context.interface';
 
 const defaultValues: IAppContext = {
   components: {},
