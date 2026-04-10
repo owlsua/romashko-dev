@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { TentacleCommandName } from '@/helpers/constants/octopusNav.constants';
+import type { TentacleCommandName } from '@/interfaces/octopus-nav.interface';
 import styles from './styles.module.css';
 
 type PopupContent = Partial<

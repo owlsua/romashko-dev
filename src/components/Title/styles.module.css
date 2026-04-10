@@ -16,8 +16,9 @@
   word-break: break-all;
 }
   
-.gradientText:hover{
-  animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+.gradientText:hover {
+  border: 2px solid var(--green);
+  animation: rainbow-text-simple-animation 0.5s ease-in forwards; 
 }
 
 .gradientText small {

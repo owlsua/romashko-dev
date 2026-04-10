@@ -142,6 +142,132 @@
   color: var(--black);
 }
 
+@media (width >= 1440px) { /* --qhd */
+  .popup {
+    max-width: 740px;
+  }
+
+  .popupIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .popupBtn,
+  .popupBtnClose {
+    width: 26px;
+    height: 26px;
+  }
+
+  .popupBody {
+    padding: 24px 28px;
+  }
+
+  .skill {
+    padding: 7px 16px;
+  }
+
+  .linkItem {
+    padding: 12px 24px;
+  }
+}
+
+@media (width >= 2560px) { /* --wqhd */
+  .popup {
+    max-width: 980px;
+  }
+
+  .popupTitleBar {
+    padding: 10px 16px;
+  }
+
+  .popupTitle {
+    letter-spacing: 2px;
+  }
+
+  .popupIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .popupBtn,
+  .popupBtnClose {
+    width: 32px;
+    height: 32px;
+  }
+
+  .popupBody {
+    padding: 32px 38px;
+  }
+
+  .skill {
+    padding: 9px 20px;
+    border-radius: 5px;
+  }
+
+  .linkItem {
+    padding: 14px 30px;
+  }
+}
+
+@media (width >= 3840px) { /* --uhd */
+  .popup {
+    max-width: 1400px;
+    border-width: 4px;
+  }
+
+  .popupTitleBar {
+    padding: 14px 22px;
+    border-bottom-width: 4px;
+    gap: 14px;
+  }
+
+  .popupTitle {
+    letter-spacing: 3px;
+  }
+
+  .popupIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .popupBtn,
+  .popupBtnClose {
+    width: 44px;
+    height: 44px;
+    border-width: 3px;
+  }
+
+  .popupBody {
+    padding: 44px 54px;
+  }
+
+  .popupText {
+    line-height: 1.8;
+  }
+
+  .helpList {
+    line-height: 2;
+  }
+
+  .skill {
+    padding: 12px 26px;
+    border-radius: 6px;
+  }
+
+  .skillList {
+    gap: 14px;
+  }
+
+  .linksGrid {
+    gap: 18px;
+  }
+
+  .linkItem {
+    padding: 18px 40px;
+    border-radius: 6px;
+  }
+}
+
 @keyframes pop-in {
   from {
     opacity: 0;
