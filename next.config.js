@@ -8,14 +8,18 @@ const securityHeaders = [
 ];
 
 const nextConfig = {
+  turbopack: {},
   compiler: {
     // ssr and displayName are configured by default
     styledComponents: true,
   },
-  optimizeFonts: false,
   distDir: 'build',
   // assetPrefix: '.',
   reactStrictMode: true,
+
+  async rewrites() {
+    return [{ source: '/llms.txt', destination: '/api/llms' }];
+  },
 
   async headers() {
     return [
