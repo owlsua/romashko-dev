@@ -24,6 +24,24 @@
   }
 }
 
+@media (width >= 1440px) { /* --qhd */
+  .wrapper {
+    width: 600px;
+  }
+}
+
+@media (width >= 2560px) { /* --wqhd */
+  .wrapper {
+    width: 800px;
+  }
+}
+
+@media (width >= 3840px) { /* --uhd */
+  .wrapper {
+    width: 1100px;
+  }
+}
+
 .svg {
   display: block;
   width: 100%;
@@ -41,7 +59,7 @@
   color: var(--green);
   cursor: pointer;
   font-family: 'VT323', monospace;
-  font-size: 0.9rem;
+  font-size: inherit;
   letter-spacing: 1px;
   text-decoration: none;
   transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
@@ -56,6 +74,108 @@
   color: #fff;
 }
 
+@media (width >= 1440px) { /* --qhd */
+  .label {
+    padding: 6px 14px;
+    font-size: 1rem;
+  }
+}
+
+@media (width >= 2560px) { /* --wqhd */
+  .label {
+    padding: 9px 20px;
+    border-radius: 4px;
+    font-size: 1.4rem;
+  }
+}
+
+@media (width >= 3840px) { /* --uhd */
+  .label {
+    padding: 14px 28px;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* ── Shared keyframes ── */
+@keyframes wiggle-l {
+  0%, 100% { transform: rotate(0); }
+  50% { transform: rotate(-3deg); }
+}
+
+@keyframes wiggle-r {
+  0%, 100% { transform: rotate(0); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes wiggle-bl {
+  0%, 100% { transform: rotate(0); }
+  40% { transform: rotate(-2.5deg); }
+  80% { transform: rotate(1.5deg); }
+}
+
+@keyframes wiggle-br {
+  0%, 100% { transform: rotate(0); }
+  40% { transform: rotate(2.5deg); }
+  80% { transform: rotate(-1.5deg); }
+}
+
+@keyframes bob-l {
+  0%, 100% { transform: rotate(0); }
+  50% { transform: rotate(-2deg); }
+}
+
+@keyframes bob-r {
+  0%, 100% { transform: rotate(0); }
+  50% { transform: rotate(2deg); }
+}
+
+/* ── SVG leg classes ── */
+.svgLeg1 {
+  animation: wiggle-l 3s ease-in-out infinite;
+  transform-origin: 9px 14px;
+}
+
+.svgLeg2 {
+  animation: wiggle-bl 3.8s ease-in-out 0.1s infinite;
+  transform-origin: 9px 17px;
+}
+
+.svgLeg3 {
+  animation: wiggle-bl 3.5s ease-in-out infinite;
+  transform-origin: 10px 19px;
+}
+
+.svgLeg4 {
+  animation: bob-l 2.8s ease-in-out 0.2s infinite;
+  transform-origin: 13px 19px;
+}
+
+.svgLeg5 {
+  animation: bob-r 2.8s ease-in-out 0.4s infinite;
+  transform-origin: 19px 19px;
+}
+
+.svgLeg6 {
+  animation: wiggle-br 3.5s ease-in-out 0.3s infinite;
+  transform-origin: 22px 19px;
+}
+
+.svgLeg7 {
+  animation: wiggle-br 3.8s ease-in-out 0.5s infinite;
+  transform-origin: 23px 17px;
+}
+
+.svgLeg8 {
+  animation: wiggle-r 3s ease-in-out infinite;
+  transform-origin: 23px 14px;
+}
+
+.hoveredLeg path {
+  fill: #7ab3ff;
+}
+
 /* ── Tentacle label overlays ── */
 .tentacleOverlay {
   position: absolute;
@@ -63,75 +183,43 @@
   pointer-events: none;
 }
 
-@keyframes label-wiggle-l {
-  0%, 100% { transform: rotate(0); }
-  50% { transform: rotate(-3deg); }
-}
-
-@keyframes label-wiggle-r {
-  0%, 100% { transform: rotate(0); }
-  50% { transform: rotate(3deg); }
-}
-
-@keyframes label-wiggle-bl {
-  0%, 100% { transform: rotate(0); }
-  40% { transform: rotate(-2.5deg); }
-  80% { transform: rotate(1.5deg); }
-}
-
-@keyframes label-wiggle-br {
-  0%, 100% { transform: rotate(0); }
-  40% { transform: rotate(2.5deg); }
-  80% { transform: rotate(-1.5deg); }
-}
-
-@keyframes label-bob-l {
-  0%, 100% { transform: rotate(0); }
-  50% { transform: rotate(-2deg); }
-}
-
-@keyframes label-bob-r {
-  0%, 100% { transform: rotate(0); }
-  50% { transform: rotate(2deg); }
-}
-
 .tentacleLeg1 {
-  animation: label-wiggle-l 3s ease-in-out infinite;
+  animation: wiggle-l 3s ease-in-out infinite;
   transform-origin: 34.09% 38.89%;
 }
 
 .tentacleLeg2 {
-  animation: label-wiggle-bl 3.8s ease-in-out 0.1s infinite;
+  animation: wiggle-bl 3.8s ease-in-out 0.1s infinite;
   transform-origin: 34.09% 47.22%;
 }
 
 .tentacleLeg3 {
-  animation: label-wiggle-bl 3.5s ease-in-out infinite;
+  animation: wiggle-bl 3.5s ease-in-out infinite;
   transform-origin: 36.36% 52.78%;
 }
 
 .tentacleLeg4 {
-  animation: label-bob-l 2.8s ease-in-out 0.2s infinite;
+  animation: bob-l 2.8s ease-in-out 0.2s infinite;
   transform-origin: 43.18% 52.78%;
 }
 
 .tentacleLeg5 {
-  animation: label-bob-r 2.8s ease-in-out 0.4s infinite;
+  animation: bob-r 2.8s ease-in-out 0.4s infinite;
   transform-origin: 56.82% 52.78%;
 }
 
 .tentacleLeg6 {
-  animation: label-wiggle-br 3.5s ease-in-out 0.3s infinite;
+  animation: wiggle-br 3.5s ease-in-out 0.3s infinite;
   transform-origin: 63.64% 52.78%;
 }
 
 .tentacleLeg7 {
-  animation: label-wiggle-br 3.8s ease-in-out 0.5s infinite;
+  animation: wiggle-br 3.8s ease-in-out 0.5s infinite;
   transform-origin: 65.91% 47.22%;
 }
 
 .tentacleLeg8 {
-  animation: label-wiggle-r 3s ease-in-out infinite;
+  animation: wiggle-r 3s ease-in-out infinite;
   transform-origin: 65.91% 38.89%;
 }
 

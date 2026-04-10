@@ -1,21 +1,29 @@
 import { useState, ReactNode } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { getSiteConfig } from '@/config/siteConfig';
 import WeatherPopup from '@/components/WeatherPopup/WeatherPopup';
+import type {
+  TentacleCommand,
+  TentacleCommandName,
+} from '@/interfaces/octopus-nav.interface';
 import {
   ALIGN_TRANSFORM,
   EXTERNAL_COMMANDS,
   LIMB_CONFIGS,
   TENTACLE_COMMANDS,
-  TentacleCommand,
-  TentacleCommandName,
 } from '@/helpers/constants/octopusNav.constants';
+
+const HREF_COMMANDS = new Map(
+  TENTACLE_COMMANDS.filter((c) => c.href).map((c) => [c.name, c.href!]),
+);
 import Popup from '../Popup/Popup';
 import popupStyles from '../Popup/styles.module.css';
 
 import styles from './styles.module.css';
 
 const OctopusNav = () => {
+  const router = useRouter();
   const [activePopup, setActivePopup] = useState<TentacleCommandName | null>(
     null,
   );
@@ -32,7 +40,7 @@ const OctopusNav = () => {
       body: <p className={popupStyles.popupText}>{aboutContent}</p>,
     },
     skills: {
-      title: 'skills.exe',
+      title: 'skills',
       body: (
         <ul className={popupStyles.skillList}>
           {skills.map((skill, i) => (
@@ -77,7 +85,7 @@ const OctopusNav = () => {
       ),
     },
     weather: {
-      title: 'weather.exe',
+      title: 'weather',
       body: <WeatherPopup />,
     },
   };
@@ -93,36 +101,15 @@ const OctopusNav = () => {
       if (url) window.open(url, '_blank');
       return;
     }
-    if (name === 'terminal') return; // handled by Link
+    const href = HREF_COMMANDS.get(name);
+    if (href) {
+      router.push(href);
+      return;
+    }
     setActivePopup(name);
   };
 
-  const handleLimbMouseEnter = (command?: TentacleCommandName) => {
-    if (!command) return;
-    setHoveredCmd(command);
-  };
-
-  const handleLimbMouseLeave = (command?: TentacleCommandName) => {
-    if (!command) return;
-    setHoveredCmd(null);
-  };
-
-  const handleLimbClick = (command?: TentacleCommandName) => {
-    if (!command) return;
-    handleClick(command);
-  };
-
-  const handleLabelMouseEnter = (name: TentacleCommandName) => {
-    setHoveredCmd(name);
-  };
-
-  const handleLabelMouseLeave = () => {
-    setHoveredCmd(null);
-  };
-
-  const handleLabelClick = (name: TentacleCommandName) => {
-    handleClick(name);
-  };
+  const handleHover = (name: TentacleCommandName | null) => setHoveredCmd(name);
 
   const getLabelClassName = (name: TentacleCommandName) =>
     `${styles.label}${hoveredCmd === name ? ` ${styles.labelHovered}` : ''}`;
@@ -142,25 +129,6 @@ const OctopusNav = () => {
           viewBox="-6 0 44 36"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <style>{`
-            @keyframes wiggle-l { 0%,100%{transform:rotate(0)} 50%{transform:rotate(-3deg)} }
-            @keyframes wiggle-r { 0%,100%{transform:rotate(0)} 50%{transform:rotate(3deg)} }
-            @keyframes wiggle-bl { 0%,100%{transform:rotate(0)} 40%{transform:rotate(-2.5deg)} 80%{transform:rotate(1.5deg)} }
-            @keyframes wiggle-br { 0%,100%{transform:rotate(0)} 40%{transform:rotate(2.5deg)} 80%{transform:rotate(-1.5deg)} }
-            @keyframes bob-l { 0%,100%{transform:rotate(0)} 50%{transform:rotate(-2deg)} }
-            @keyframes bob-r { 0%,100%{transform:rotate(0)} 50%{transform:rotate(2deg)} }
-            .leg-1 { transform-origin:9px 14px; animation:wiggle-l 3s ease-in-out infinite }
-            .leg-2 { transform-origin:9px 17px; animation:wiggle-bl 3.8s ease-in-out .1s infinite }
-            .leg-3 { transform-origin:10px 19px; animation:wiggle-bl 3.5s ease-in-out infinite }
-            .leg-4 { transform-origin:13px 19px; animation:bob-l 2.8s ease-in-out .2s infinite }
-            .leg-5 { transform-origin:19px 19px; animation:bob-r 2.8s ease-in-out .4s infinite }
-            .leg-6 { transform-origin:22px 19px; animation:wiggle-br 3.5s ease-in-out .3s infinite }
-            .leg-7 { transform-origin:23px 17px; animation:wiggle-br 3.8s ease-in-out .5s infinite }
-            .leg-8 { transform-origin:23px 14px; animation:wiggle-r 3s ease-in-out infinite }
-            .leg-1,.leg-2,.leg-3,.leg-4,.leg-5,.leg-6,.leg-7,.leg-8 { cursor:pointer }
-            .hovered path { fill:#7ab3ff }
-          `}</style>
-
           {/* Body */}
           <path
             d="M11 5h10v1h-10zM10 6h12v1h-12zM9 7h14v10H9zM10 17h12v1h-12z"
@@ -194,10 +162,10 @@ const OctopusNav = () => {
           {LIMB_CONFIGS.map((limb, idx) => (
             <g
               key={limb.command ?? `limb-${idx}`}
-              className={`${limb.className}${limb.command && hoveredCmd === limb.command ? ' hovered' : ''}`}
-              onMouseEnter={() => handleLimbMouseEnter(limb.command)}
-              onMouseLeave={() => handleLimbMouseLeave(limb.command)}
-              onClick={() => handleLimbClick(limb.command)}
+              className={`${styles[limb.className]}${limb.command && hoveredCmd === limb.command ? ` ${styles.hoveredLeg}` : ''}`}
+              onMouseEnter={() => limb.command && handleHover(limb.command)}
+              onMouseLeave={() => handleHover(null)}
+              onClick={() => limb.command && handleClick(limb.command)}
               style={{ cursor: limb.command ? 'pointer' : 'default' }}
             >
               {limb.paths.map((path) => (
@@ -216,13 +184,13 @@ const OctopusNav = () => {
             key={cmd.name}
             className={`${styles.tentacleOverlay} ${styles[cmd.overlayClass]}`}
           >
-            {cmd.name === 'terminal' ? (
+            {cmd.href ? (
               <Link
-                href="/"
+                href={cmd.href}
                 className={getLabelClassName(cmd.name)}
                 style={getLabelStyle(cmd)}
-                onMouseEnter={() => handleLabelMouseEnter(cmd.name)}
-                onMouseLeave={handleLabelMouseLeave}
+                onMouseEnter={() => handleHover(cmd.name)}
+                onMouseLeave={() => handleHover(null)}
               >
                 {cmd.label}
               </Link>
@@ -231,9 +199,9 @@ const OctopusNav = () => {
                 type="button"
                 className={getLabelClassName(cmd.name)}
                 style={getLabelStyle(cmd)}
-                onMouseEnter={() => handleLabelMouseEnter(cmd.name)}
-                onMouseLeave={handleLabelMouseLeave}
-                onClick={() => handleLabelClick(cmd.name)}
+                onMouseEnter={() => handleHover(cmd.name)}
+                onMouseLeave={() => handleHover(null)}
+                onClick={() => handleClick(cmd.name)}
               >
                 {cmd.label}
               </button>

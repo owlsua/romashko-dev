@@ -2,15 +2,7 @@ import type {
   TentacleAlign,
   TentacleCommand,
   TentacleCommandName,
-  TentacleOverlayClass,
 } from 'src/interfaces/octopus-nav.interface';
-
-export type {
-  TentacleAlign,
-  TentacleCommand,
-  TentacleCommandName,
-  TentacleOverlayClass,
-};
 
 export const TENTACLE_COMMANDS: TentacleCommand[] = [
   {
@@ -52,6 +44,7 @@ export const TENTACLE_COMMANDS: TentacleCommand[] = [
     left: '76%',
     top: '69%',
     align: 'left',
+    href: '/terminal',
   },
   {
     name: 'weather',
@@ -89,7 +82,7 @@ export type LimbConfig = {
 
 export const LIMB_CONFIGS: LimbConfig[] = [
   {
-    className: 'leg-1',
+    className: 'svgLeg1',
     command: 'about',
     paths: [
       { d: 'M7 11h3v4H7z', fill: '#4a86e8' },
@@ -100,7 +93,7 @@ export const LIMB_CONFIGS: LimbConfig[] = [
     ],
   },
   {
-    className: 'leg-2',
+    className: 'svgLeg2',
     command: 'cv',
     paths: [
       { d: 'M7 15h3v3H7z', fill: '#4a86e8' },
@@ -111,7 +104,7 @@ export const LIMB_CONFIGS: LimbConfig[] = [
     ],
   },
   {
-    className: 'leg-3',
+    className: 'svgLeg3',
     command: 'links',
     paths: [
       { d: 'M8 18h4v2H8z', fill: '#4a86e8' },
@@ -121,7 +114,7 @@ export const LIMB_CONFIGS: LimbConfig[] = [
     ],
   },
   {
-    className: 'leg-4',
+    className: 'svgLeg4',
     // command: 'weather',
     paths: [
       { d: 'M12 18h3v3h-3z', fill: '#4a86e8' },
@@ -131,7 +124,7 @@ export const LIMB_CONFIGS: LimbConfig[] = [
     ],
   },
   {
-    className: 'leg-5',
+    className: 'svgLeg5',
     paths: [
       { d: 'M17 18h3v3h-3z', fill: '#4a86e8' },
       { d: 'M18 21h2v3h-2z', fill: '#4a86e8' },
@@ -140,7 +133,7 @@ export const LIMB_CONFIGS: LimbConfig[] = [
     ],
   },
   {
-    className: 'leg-6',
+    className: 'svgLeg6',
     command: 'terminal',
     paths: [
       { d: 'M20 18h4v2h-4z', fill: '#4a86e8' },
@@ -150,7 +143,7 @@ export const LIMB_CONFIGS: LimbConfig[] = [
     ],
   },
   {
-    className: 'leg-7',
+    className: 'svgLeg7',
     command: 'weather',
     paths: [
       { d: 'M22 15h3v3h-3z', fill: '#4a86e8' },
@@ -161,7 +154,7 @@ export const LIMB_CONFIGS: LimbConfig[] = [
     ],
   },
   {
-    className: 'leg-8',
+    className: 'svgLeg8',
     command: 'skills',
     paths: [
       { d: 'M22 11h3v4h-3z', fill: '#4a86e8' },

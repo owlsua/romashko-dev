@@ -28,4 +28,5 @@ export interface TentacleCommand {
   left: string;
   top: string;
   align: TentacleAlign;
+  href?: string;
 }
