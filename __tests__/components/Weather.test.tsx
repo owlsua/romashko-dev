@@ -1,10 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import Weather from '@/components/Weather/Weather';
 import { WeatherContext } from '@/context/weather.context';
 
 describe('Weather component', () => {
   const getWeather = jest.fn();
   const fetchWeatherByCity = jest.fn();
+  const fetchWeatherByCoords = jest.fn();
 
   const renderWithContext = (component: React.ReactElement) => {
     return render(
@@ -12,6 +13,7 @@ describe('Weather component', () => {
         value={{
           getWeather,
           fetchWeatherByCity,
+          fetchWeatherByCoords,
           defaultKey: 'default',
         }}
       >
@@ -75,16 +77,19 @@ describe('Weather component', () => {
     expect(screen.getByText('Wind: 3.5 m/s')).toBeInTheDocument();
   });
 
-  test('returns null when there is no weather data', () => {
+  test('shows loading state and triggers default city fetch when there is no weather data', async () => {
     getWeather.mockReturnValue({
       data: null,
       loading: false,
       error: null,
     });
 
-    const { container } = renderWithContext(<Weather />);
+    renderWithContext(<Weather />);
 
-    expect(container).toBeEmptyDOMElement();
+    expect(screen.getByText(/fetching weather data/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(fetchWeatherByCity).toHaveBeenCalledWith('default', 'Kyiv');
+    });
   });
 
   test('fetches weather when city prop is provided', () => {

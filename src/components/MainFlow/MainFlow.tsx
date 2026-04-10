@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import CommandOutcome from '@/components/CommandOutcome/CommandOutcome';
+import CookieBannerTerminal from '@/components/CookieBanner/CookieBannerTerminal';
 import Prompt from '../Prompt/Prompt';
 import { AppContext } from '@/context/app.context';
 import { observer } from 'mobx-react-lite';
@@ -10,6 +11,7 @@ const MainFlow = observer(() => {
   const { commands } = useContext(AppContext);
   return (
     <div className={styles.mainFlow} data-testid="mainFlow">
+      <CookieBannerTerminal />
       <Prompt />
       {commands.commands.map((command: { value: string }, index: number) => (
         <div key={command.value + index}>

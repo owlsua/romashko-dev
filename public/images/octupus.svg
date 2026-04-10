@@ -1,0 +1,103 @@
+<svg width="450" height="400" viewBox="-3 0 38 32" xmlns="http://www.w3.org/2000/svg" style="image-rendering: pixelated;">
+  <style>
+    @keyframes wiggle-l { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-8deg)} }
+    @keyframes wiggle-r { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(8deg)} }
+    @keyframes wiggle-bl { 0%,100%{transform:rotate(0deg)} 40%{transform:rotate(-6deg)} 80%{transform:rotate(4deg)} }
+    @keyframes wiggle-br { 0%,100%{transform:rotate(0deg)} 40%{transform:rotate(6deg)} 80%{transform:rotate(-4deg)} }
+    @keyframes bob-l { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(-5deg)} }
+    @keyframes bob-r { 0%,100%{transform:rotate(0deg)} 50%{transform:rotate(5deg)} }
+    .arm-l { transform-origin: 9px 14px; animation: wiggle-l 1.8s ease-in-out infinite; }
+    .arm-r { transform-origin: 23px 14px; animation: wiggle-r 1.8s ease-in-out infinite; }
+    .leg-1 { transform-origin: 10px 19px; animation: wiggle-bl 2s ease-in-out infinite; }
+    .leg-2 { transform-origin: 13px 19px; animation: bob-l 1.6s ease-in-out 0.2s infinite; }
+    .leg-3 { transform-origin: 19px 19px; animation: bob-r 1.6s ease-in-out 0.4s infinite; }
+    .leg-4 { transform-origin: 22px 19px; animation: wiggle-br 2s ease-in-out 0.3s infinite; }
+    .arm-bl { transform-origin: 9px 17px; animation: wiggle-bl 2.2s ease-in-out 0.1s infinite; }
+    .arm-br { transform-origin: 23px 17px; animation: wiggle-br 2.2s ease-in-out 0.5s infinite; }
+  </style>
+
+  <!-- Body -->
+  <path d="M11 5h10v1h-10zM10 6h12v1h-12zM9 7h14v10H9zM10 17h12v1h-12z" fill="#2a4d85"/>
+  <path d="M12 6h8v1h-8zM11 7h10v1h-10zM10 8h12v8h-12z" fill="#4a86e8"/>
+  <path d="M13 7h4v1h-4zM12 8h2v1h-2z" fill="#90caf9"/>
+
+  <!-- Eyes -->
+  <rect x="12" y="11" width="4" height="3" fill="#ffffff"/>
+  <rect x="18" y="11" width="4" height="3" fill="#ffffff"/>
+  <rect x="13" y="12" width="2" height="2" fill="#1a1a1a"/>
+  <rect x="19" y="12" width="2" height="2" fill="#1a1a1a"/>
+
+  <!-- Mouth -->
+  <rect x="15" y="15" width="3" height="1" fill="#1a237e" opacity="0.4"/>
+
+  <!-- Belt -->
+  <path d="M13 16h8v1h-8z" fill="#32599e"/>
+
+  <!-- Left arm — thick at body, thin at tip -->
+  <g class="arm-l">
+    <path d="M7 11h3v4H7z" fill="#4a86e8"/>
+    <path d="M5 11h3v3H5z" fill="#4a86e8"/>
+    <path d="M3 10h3v2H3z" fill="#4a86e8"/>
+    <path d="M1 9h2v2H1z" fill="#4a86e8"/>
+    <path d="M0 8h1v2H0z" fill="#e0e0e0"/>
+  </g>
+
+  <!-- Right arm — thick at body, thin at tip -->
+  <g class="arm-r">
+    <path d="M22 11h3v4h-3z" fill="#4a86e8"/>
+    <path d="M24 11h3v3h-3z" fill="#4a86e8"/>
+    <path d="M26 10h3v2h-3z" fill="#4a86e8"/>
+    <path d="M29 9h2v2h-2z" fill="#4a86e8"/>
+    <path d="M31 8h1v2h-1z" fill="#e0e0e0"/>
+  </g>
+
+  <!-- Leg 1 — far left, thick to thin -->
+  <g class="leg-1">
+    <path d="M8 18h4v2H8z" fill="#4a86e8"/>
+    <path d="M7 20h3v2H7z" fill="#4a86e8"/>
+    <path d="M5 22h2v2H5z" fill="#4a86e8"/>
+    <path d="M4 24h1v2H4z" fill="#e0e0e0"/>
+  </g>
+
+  <!-- Leg 2 — inner left, thick to thin -->
+  <g class="leg-2">
+    <path d="M12 18h3v3h-3z" fill="#4a86e8"/>
+    <path d="M12 21h2v3h-2z" fill="#4a86e8"/>
+    <path d="M12 24h1v2h-1z" fill="#4a86e8"/>
+    <path d="M12 26h1v1h-1z" fill="#e0e0e0"/>
+  </g>
+
+  <!-- Lower left arm — at belt level, angled down, thick to thin -->
+  <g class="arm-bl">
+    <path d="M7 15h3v3H7z" fill="#4a86e8"/>
+    <path d="M5 16h3v2H5z" fill="#4a86e8"/>
+    <path d="M3 17h3v2H3z" fill="#4a86e8"/>
+    <path d="M1 18h2v1H1z" fill="#4a86e8"/>
+    <path d="M0 18h1v2H0z" fill="#e0e0e0"/>
+  </g>
+
+  <!-- Lower right arm — at belt level, angled down, thick to thin -->
+  <g class="arm-br">
+    <path d="M22 15h3v3h-3z" fill="#4a86e8"/>
+    <path d="M24 16h3v2h-3z" fill="#4a86e8"/>
+    <path d="M26 17h3v2h-3z" fill="#4a86e8"/>
+    <path d="M29 18h2v1h-2z" fill="#4a86e8"/>
+    <path d="M31 18h1v2h-1z" fill="#e0e0e0"/>
+  </g>
+
+  <!-- Leg 3 — inner right, thick to thin -->
+  <g class="leg-3">
+    <path d="M17 18h3v3h-3z" fill="#4a86e8"/>
+    <path d="M18 21h2v3h-2z" fill="#4a86e8"/>
+    <path d="M19 24h1v2h-1z" fill="#4a86e8"/>
+    <path d="M19 26h1v1h-1z" fill="#e0e0e0"/>
+  </g>
+
+  <!-- Leg 4 — far right, thick to thin -->
+  <g class="leg-4">
+    <path d="M20 18h4v2h-4z" fill="#4a86e8"/>
+    <path d="M22 20h3v2h-3z" fill="#4a86e8"/>
+    <path d="M25 22h2v2h-2z" fill="#4a86e8"/>
+    <path d="M27 24h1v2h-1z" fill="#e0e0e0"/>
+  </g>
+</svg>

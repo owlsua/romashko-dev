@@ -19,3 +19,13 @@
 .help {
   color: var(--green);
 }
+
+.gui {
+  color: #A7C7E7;
+  font-weight: 600;
+}
+
+.guiCommand {
+  color: var(--yellow-light);
+  font-weight: 600;
+}

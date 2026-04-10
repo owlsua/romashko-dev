@@ -1,5 +1,6 @@
 /* stylelint-disable max-line-length */
 :root {
+  --lavender-pastel: #A7C7E7;
   --primary: #4B4B4D;
   --black: #334144;
   --gray: #C7C3C3;
@@ -28,7 +29,34 @@
   --mobile: 400px;
   --tablet: 768px;
   --desktop: 1220px;
+  --qhd: 1440px;
+  --wqhd: 2560px;
+  --uhd: 3840px;
   --font-primary: 'Cascadia Code', sans-serif;
+  --cookie-base: #D4A24E;
+  --cookie-chip: #6B4412;
+  --cookie-text: #3A2000;
+  --cookie-shape: polygon(
+    28% 0%, 72% 0%,
+    72% 12%, 88% 12%,
+    88% 24%, 100% 24%,
+    100% 36%, 88% 36%,
+    88% 48%, 100% 48%,
+    100% 76%, 88% 76%,
+    88% 88%, 72% 88%,
+    72% 100%,
+    52% 100%,
+    52% 88%, 28% 88%,
+    28% 100%,
+    16% 100%, 16% 88%,
+    12% 88%, 12% 76%,
+    0% 76%,
+    0% 60%, 12% 60%,
+    12% 48%, 0% 48%,
+    0% 24%,
+    12% 24%, 12% 12%,
+    28% 12%, 28% 0%
+  );
 }
 
 html,
@@ -38,8 +66,31 @@ body {
   font-family: var(--font-primary);
 }
 
+@media (width >= 1440px) { /* --qhd */
+  html {
+    font-size: 1.1em;
+  }
+}
+
+@media (width >= 2560px) { /* --wqhd */
+  html {
+    font-size: 1.4em;
+  }
+}
+
+@media (width >= 3840px) { /* --uhd */
+  html {
+    font-size: 1.7em;
+  }
+}
+
 * {
   box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 main {

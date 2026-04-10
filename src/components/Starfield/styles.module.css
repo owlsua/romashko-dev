@@ -1,0 +1,171 @@
+/* stylelint-disable max-line-length */
+
+/* ── Starfield container ── */
+.starsContainer {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ── Stars ── */
+.starsLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  animation: twinkle 3.8s ease-in-out infinite alternate;
+  background: #fff;
+  transform: translate(-50%, -50%);
+}
+
+.starSmall {
+  width: 1px;
+  height: 1px;
+}
+
+.starMedium {
+  width: 2px;
+  height: 2px;
+}
+
+.starLarge {
+  width: 3px;
+  height: 3px;
+}
+
+/* ── Shooting stars ── */
+.shootingStar,
+.shootingStar2,
+.shootingStar3 {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+}
+
+.shootingStar::before,
+.shootingStar2::before,
+.shootingStar3::before {
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, #fff9, transparent);
+  content: '';
+  transform: translateY(-50%);
+}
+
+.shootingStar {
+  top: 15%;
+  right: 20%;
+  animation: shoot 6s ease-in-out 1s infinite;
+}
+
+.shootingStar2 {
+  top: 30%;
+  right: 40%;
+  animation: shoot 8s ease-in-out 4s infinite;
+}
+
+.shootingStar3 {
+  top: 10%;
+  right: 55%;
+  animation: shoot 7s ease-in-out 7s infinite;
+}
+
+/* ── Moon ── */
+.moon {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  animation:
+    moon-appear 1s ease-out 2s both,
+    moon-glow 4s ease-in-out 3s infinite alternate;
+  background: var(--yellow-light);
+  box-shadow:
+    0 0 20px rgb(235 219 178 / 40%),
+    0 0 60px rgb(235 219 178 / 15%),
+    inset -12px -4px 0 0 #1b2735;
+  transform: translateX(-50%);
+}
+
+@media (width <= 500px) {
+  .moon {
+    top: 15%;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* ── Keyframes ── */
+@keyframes moon-appear {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(-45deg);
+  }
+
+  2% {
+    opacity: 1;
+  }
+
+  6% {
+    opacity: 0;
+    transform: translate(-200px, 200px) rotate(-45deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-200px, 200px) rotate(-45deg);
+  }
+}
+
+@keyframes moon-glow {
+  0% {
+    box-shadow:
+      0 0 20px rgb(235 219 178 / 30%),
+      0 0 60px rgb(235 219 178 / 10%),
+      inset -12px -4px 0 0 #1b2735;
+  }
+
+  100% {
+    box-shadow:
+      0 0 30px rgb(235 219 178 / 50%),
+      0 0 80px rgb(235 219 178 / 20%),
+      inset -12px -4px 0 0 #1b2735;
+  }
+}

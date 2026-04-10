@@ -1,0 +1,84 @@
+.landing {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  color: var(--white);
+  font-family: var(--font-primary);
+  gap: 3rem;
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  margin-top: 3rem;
+  animation: fade-in 0.8s ease-out 0.4s both;
+  background-clip: text;
+  background-color: #ca4246;
+  background-image: var(--rainbow-gradient);
+  background-size: 100%;
+  font-family: 'VT323', monospace;
+  font-size: 4rem;
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+  
+  @media (width >= 600px) {
+    margin-top: 0;
+  }
+}
+
+.subtitle {
+  position: relative;
+  z-index: 1;
+  margin: -2rem 0 0;
+  animation: fade-in 0.8s ease-out 0.8s both;
+  color: var(--yellow-light);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.choices {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  animation: fade-in 0.8s ease-out 1.2s both;
+  gap: 2rem;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@media (width <= 500px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .choices {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

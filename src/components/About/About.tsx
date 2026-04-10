@@ -20,6 +20,11 @@ const About = ({ content }: AboutProps) => {
       <p className={cx(styles.paragraph, styles.help)} data-testid="aboutHelp">
         Type &apos;help&apos; to see list of available commands.
       </p>
+      <p className={cx(styles.paragraph, styles.gui)} data-testid="aboutGui">
+        Don&apos;t like command-line interface? Type{' '}
+        <span className={styles.guiCommand}>&apos;gui&apos;</span> to switch to
+        graphical one.
+      </p>
     </div>
   );
 };

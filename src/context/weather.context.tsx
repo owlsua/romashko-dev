@@ -1,7 +1,6 @@
 import {
   createContext,
   useContext,
-  useEffect,
   useState,
   useCallback,
   type ReactNode,
@@ -26,6 +25,11 @@ interface WeatherEntry {
 interface IWeatherContext {
   getWeather: (key: string) => WeatherEntry;
   fetchWeatherByCity: (key: string, cityName: string) => Promise<void>;
+  fetchWeatherByCoords: (
+    key: string,
+    lat: number,
+    lon: number,
+  ) => Promise<void>;
   defaultKey: string;
 }
 
@@ -33,13 +37,14 @@ const DEFAULT_CITY = 'Kyiv';
 
 const defaultEntry: WeatherEntry = {
   data: null,
-  loading: true,
+  loading: false,
   error: null,
 };
 
 const defaultValues: IWeatherContext = {
   getWeather: () => defaultEntry,
   fetchWeatherByCity: async () => {},
+  fetchWeatherByCoords: async () => {},
   defaultKey: 'default',
 };
 
@@ -157,44 +162,10 @@ export const WeatherContextProvider = ({
     [],
   );
 
-  useEffect(() => {
-    const key = 'default';
-
-    const getLocation = () => {
-      const isSecureContext =
-        window.isSecureContext ||
-        window.location.hostname === 'localhost' ||
-        window.location.hostname === '127.0.0.1';
-
-      if (!isSecureContext) {
-        fetchWeatherByCity(key, DEFAULT_CITY);
-        return;
-      }
-
-      if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            fetchWeatherByCoords(
-              key,
-              position.coords.latitude,
-              position.coords.longitude,
-            );
-          },
-          () => {
-            fetchWeatherByCity(key, DEFAULT_CITY);
-          },
-        );
-      } else {
-        fetchWeatherByCity(key, DEFAULT_CITY);
-      }
-    };
-
-    getLocation();
-  }, [fetchWeatherByCity, fetchWeatherByCoords]);
-
   const value: IWeatherContext = {
     getWeather,
     fetchWeatherByCity,
+    fetchWeatherByCoords,
     defaultKey: 'default',
   };
 

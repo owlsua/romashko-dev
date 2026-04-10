@@ -1,0 +1,281 @@
+.overlay {
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  background: rgb(0 0 0 / 50%);
+  inset: 0;
+}
+
+.popup {
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  border: 3px solid #a89984;
+  animation: pop-in 0.2s ease-out;
+}
+
+.popupTitleBar {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-bottom: 3px solid #a89984;
+  background: #a89984;
+  gap: 8px;
+}
+
+.popupIcon {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #1b2735;
+  background: #1b2735;
+}
+
+.popupTitle {
+  flex: 1;
+  color: #1b2735;
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.popupControls {
+  display: flex;
+  gap: 6px;
+}
+
+.popupBtn {
+  display: flex;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1b2735;
+  color: #1b2735;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.popupBtnClose {
+  display: flex;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 2px solid #1b2735;
+  background: transparent;
+  color: #1b2735;
+  cursor: pointer;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.popupBtnClose:hover {
+  background: #1b2735;
+  color: #a89984;
+}
+
+.popupBody {
+  max-height: calc(80vh - 40px);
+  padding: 20px 24px;
+  backdrop-filter: blur(6px);
+  background: rgb(9 10 15 / 90%);
+  overflow-y: auto;
+}
+
+.popupText {
+  margin: 0;
+  color: var(--yellow-light);
+  line-height: 1.6;
+}
+
+.helpList {
+  padding: 0 0 0 20px;
+  margin: 8px 0 0;
+  color: var(--green);
+  line-height: 1.8;
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  gap: 8px;
+  list-style: none;
+}
+
+.skill {
+  padding: 6px 14px;
+  border-radius: 4px;
+  background: rgb(255 255 255 / 10%);
+  color: var(--white);
+  font-size: 0.9rem;
+}
+
+.skill:nth-child(odd) {
+  background: rgb(0 0 0 / 30%);
+}
+
+.linksGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.linkItem {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  color: var(--green);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.linkItem:hover {
+  background: var(--green);
+  color: var(--black);
+}
+
+@media (width >= 1440px) { /* --qhd */
+  .popup {
+    max-width: 740px;
+  }
+
+  .popupIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .popupBtn,
+  .popupBtnClose {
+    width: 26px;
+    height: 26px;
+  }
+
+  .popupBody {
+    padding: 24px 28px;
+  }
+
+  .skill {
+    padding: 7px 16px;
+  }
+
+  .linkItem {
+    padding: 12px 24px;
+  }
+}
+
+@media (width >= 2560px) { /* --wqhd */
+  .popup {
+    max-width: 980px;
+  }
+
+  .popupTitleBar {
+    padding: 10px 16px;
+  }
+
+  .popupTitle {
+    letter-spacing: 2px;
+  }
+
+  .popupIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .popupBtn,
+  .popupBtnClose {
+    width: 32px;
+    height: 32px;
+  }
+
+  .popupBody {
+    padding: 32px 38px;
+  }
+
+  .skill {
+    padding: 9px 20px;
+    border-radius: 5px;
+  }
+
+  .linkItem {
+    padding: 14px 30px;
+  }
+}
+
+@media (width >= 3840px) { /* --uhd */
+  .popup {
+    max-width: 1400px;
+    border-width: 4px;
+  }
+
+  .popupTitleBar {
+    padding: 14px 22px;
+    border-bottom-width: 4px;
+    gap: 14px;
+  }
+
+  .popupTitle {
+    letter-spacing: 3px;
+  }
+
+  .popupIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .popupBtn,
+  .popupBtnClose {
+    width: 44px;
+    height: 44px;
+    border-width: 3px;
+  }
+
+  .popupBody {
+    padding: 44px 54px;
+  }
+
+  .popupText {
+    line-height: 1.8;
+  }
+
+  .helpList {
+    line-height: 2;
+  }
+
+  .skill {
+    padding: 12px 26px;
+    border-radius: 6px;
+  }
+
+  .skillList {
+    gap: 14px;
+  }
+
+  .linksGrid {
+    gap: 18px;
+  }
+
+  .linkItem {
+    padding: 18px 40px;
+    border-radius: 6px;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

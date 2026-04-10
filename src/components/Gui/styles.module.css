@@ -1,0 +1,256 @@
+/* stylelint-disable max-line-length */
+.gui {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  color: var(--white);
+  font-family: var(--font-primary);
+  gap: 4rem;
+}
+
+.octopusArea {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Desktop-only octopus wrapper */
+.octopusDesktop {
+  display: none;
+}
+
+@media (width >= 900px) {
+  .octopusDesktop {
+    display: block;
+  }
+}
+
+.octopus {
+  position: relative;
+  z-index: 1;
+  width: 300px;
+}
+
+.section {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 700px;
+  padding: 20px 24px;
+  border: 2px solid var(--orange);
+  border-radius: 4px;
+  margin-bottom: 32px;
+  animation: fade-in 0.6s ease-out;
+  backdrop-filter: blur(4px);
+  background: rgb(9 10 15 / 70%);
+}
+
+/* ── Retro window frame ── */
+.windowFrame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 700px;
+  border: 3px solid #a89984;
+  margin-bottom: 32px;
+  animation: fade-in 0.6s ease-out;
+}
+
+.windowTitleBar {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-bottom: 3px solid #a89984;
+  background: #a89984;
+  gap: 8px;
+}
+
+.windowIcon {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #1b2735;
+  background: #1b2735;
+}
+
+.windowTitle {
+  flex: 1;
+  color: #1b2735;
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.windowControls {
+  display: flex;
+  gap: 6px;
+}
+
+.windowBtn {
+  display: flex;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1b2735;
+  color: #1b2735;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.windowBtnClose {
+  display: flex;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1b2735;
+  background:
+    linear-gradient(45deg, transparent 40%, #1b2735 40%, #1b2735 60%, transparent 60%),
+    linear-gradient(-45deg, transparent 40%, #1b2735 40%, #1b2735 60%, transparent 60%);
+  color: #1b2735;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.windowContent {
+  padding: 20px 24px;
+  backdrop-filter: blur(6px);
+  background: rgb(9 10 15 / 80%);
+}
+
+.sectionTitle {
+  margin: 0 0 12px;
+  color: var(--blue);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.text {
+  margin: 0;
+  color: var(--yellow-light);
+  line-height: 1.6;
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  gap: 8px;
+  list-style: none;
+}
+
+.skill {
+  padding: 6px 14px;
+  border-radius: 4px;
+  background: rgb(255 255 255 / 10%);
+  color: var(--white);
+  font-size: 0.9rem;
+}
+
+.skill:nth-child(odd) {
+  background: rgb(0 0 0 / 30%);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.link {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid var(--green);
+  border-radius: 4px;
+  color: var(--green);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.link:hover {
+  background: var(--green);
+  color: var(--black);
+}
+
+.footer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.terminalLink {
+  display: block;
+  overflow: hidden;
+  border: 3px solid #a89984;
+}
+
+.terminalLink:hover {
+  background: #a89984;
+  color: var(--black);
+}
+
+.terminalLinkBar {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-bottom: 3px solid #a89984;
+  background: #a89984;
+  color: #1b2735;
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  gap: 8px;
+  letter-spacing: 1px;
+}
+
+.terminalLinkBarIcon {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #1b2735;
+  background: #1b2735;
+}
+
+.terminalLinkContent {
+  display: block;
+  padding: 16px 24px;
+  backdrop-filter: blur(6px);
+  background: rgb(9 10 15 / 80%);
+  color: var(--green);
+  font-size: 1rem;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.terminalLink:hover .terminalLinkContent {
+  background: var(--green);
+  color: var(--black);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (width <= 500px) {
+  .section {
+    padding: 16px;
+  }
+}

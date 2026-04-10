@@ -1,0 +1,69 @@
+.header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  max-width: 1600px;
+  justify-content: space-between;
+  padding: 40px 20px;
+  text-align: center;
+  
+  @media (width >= 600px) {
+    padding: 40px 30px;
+  }
+}
+
+.title {
+  margin: 0;
+  animation: fade-in 0.8s ease-out 1.2s both;
+  font-family: 'VT323', monospace;
+  font-size: 4rem;
+}
+
+.titleLink {
+  background-clip: text;
+  background-color: #ca4246;
+  background-image: var(--rainbow-gradient);
+  background-size: 100%;
+  filter: brightness(1);
+  -webkit-text-fill-color: transparent;
+  transition: filter 0.3s;
+}
+
+.titleLink:hover {
+  filter: brightness(1.3);
+}
+
+.dot {
+  font-size: 2.5rem;
+}
+
+.subtitle {
+  align-content: center;
+  margin: 0;
+  animation: fade-in 0.8s ease-out 1.6s both;
+  color: var(--yellow-light);
+  font-size: 1.1rem;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (width <= 500px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .dot {
+    font-size: 1.6rem;
+  }
+}
