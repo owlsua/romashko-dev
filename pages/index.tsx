@@ -1,18 +1,15 @@
 import Head from 'next/head';
 import { NextPage } from 'next';
-import MainFlow from '@/components/MainFlow/MainFlow';
+import Landing from '@/components/Landing/Landing';
 
 const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>Romashko.dev</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
-        <MainFlow />
-      </main>
+      <Landing />
     </>
   );
 };
