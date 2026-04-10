@@ -4,13 +4,21 @@
   display: flex;
   overflow: hidden;
   min-height: 100vh;
+  min-height: 100dvh;
   flex-direction: column;
   align-items: center;
-  padding: 40px 20px;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   color: var(--white);
   font-family: var(--font-primary);
-  gap: 9rem;
+  gap: 4rem;
+}
+
+.octopusArea {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Desktop-only octopus wrapper */
