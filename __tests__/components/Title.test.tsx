@@ -9,6 +9,7 @@ test('renders Title', () => {
 
   expect(screen.getByTestId('title')).toBeInTheDocument();
   expect(screen.getByTestId('title')).toHaveTextContent(title);
+  expect(screen.getByTestId('title')).toHaveClass('gradientTitle');
 
   expect(screen.queryByTestId('subtitle')).not.toBeInTheDocument();
 });
@@ -18,6 +19,7 @@ test('renders Title with subtitle', () => {
 
   expect(screen.getByTestId('title')).toBeInTheDocument();
   expect(screen.getByTestId('title')).toHaveTextContent(titleArr[0]);
+  expect(screen.getByTestId('title')).toHaveClass('gradientTitle');
 
   expect(screen.getByTestId('subtitle')).toBeInTheDocument();
   expect(screen.getByTestId('subtitle')).toHaveTextContent(titleArr[1]);
