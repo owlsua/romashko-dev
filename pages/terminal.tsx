@@ -7,7 +7,8 @@ const TerminalPage: NextPage = () => {
     <>
       <Head>
         <title>Terminal | Romashko.dev</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="alternate icon" href="/favicon.ico" />
       </Head>
 
       <main>
