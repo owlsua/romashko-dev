@@ -21,12 +21,7 @@
 }
 
 .titleLink {
-  background-clip: text;
-  background-color: #ca4246;
-  background-image: var(--rainbow-gradient);
-  background-size: 100%;
   filter: brightness(1);
-  -webkit-text-fill-color: transparent;
   transition: filter 0.3s;
 }
 

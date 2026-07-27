@@ -6,7 +6,9 @@ import Card from './Card/Card';
 const Landing = () => (
   <div className={styles.landing}>
     <Starfield />
-    <h1 className={styles.title}>Romashko.dev</h1>
+    <h1 className={styles.title}>
+      <span className="gradientTitle">Romashko.dev</span>
+    </h1>
     <p className={styles.subtitle}>select interface</p>
     <div className={styles.choices}>
       <Card

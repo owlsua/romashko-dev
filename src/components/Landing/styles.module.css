@@ -19,15 +19,10 @@
   margin: 0;
   margin-top: 3rem;
   animation: fade-in 0.8s ease-out 0.4s both;
-  background-clip: text;
-  background-color: #ca4246;
-  background-image: var(--rainbow-gradient);
-  background-size: 100%;
   font-family: 'VT323', monospace;
   font-size: 4rem;
   text-align: center;
-  -webkit-text-fill-color: transparent;
-  
+
   @media (width >= 600px) {
     margin-top: 0;
   }
