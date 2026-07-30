@@ -14,18 +14,6 @@
   --green-light: #98971A;
   --yellow-light: #EBDBB2;
   --blue: #47A8BD;
-  --rainbow-gradient: linear-gradient(
-    45deg,
-    #CA4246 16.666%, 
-    #E16541 16.666%, 
-    #E16541 33.333%, 
-    #F18F43 33.333%, 
-    #F18F43 50%, 
-    #8B9862 50%, 
-    #8B9862 66.666%, 
-    #476098 66.666%, 
-    #476098 83.333%, 
-    #A7489B 83.333%);
   --mobile: 400px;
   --tablet: 768px;
   --desktop: 1220px;
@@ -64,6 +52,45 @@ body {
   padding: 0;
   margin: 0;
   font-family: var(--font-primary);
+}
+
+.gradientTitle {
+  animation: gradient-title-cycle 50s linear infinite;
+  background-clip: text;
+  background-color: #8DACC7;
+  background-image: linear-gradient(
+    135deg,
+    #8DACC7, #8AB9B4, #97BF98, #B6B88E, #C8B090, #C9A291,
+    #AF98CA, #BE97BF, #C993A6, #C99B92, #C6AB8C, #CDBF99,
+    #AD99CD, #999FCD, #91AEC5, #8EB5B8, #90B9AC, #9ABBA0,
+    #C790B4, #CB9494, #C8AB8F, #C5BB90, #ADBF97, #95BAA9,
+    #AABE88, #8FBAAA, #90AFC2, #A69ACD, #C198C0, #CC97AA,
+    #C7BA8E, #B0BD8E, #96BA9E, #8EB1B2, #93A7C1, #A29EC4,
+    #C78E9D, #C291B1, #B998C1, #A49BCC, #96A6CA, #96ABC2,
+    #C9BF91, #C5AE8A, #C59B8C, #C3929E, #BF97B7, #AE9CCA,
+    #B6A9D5, #A2BFD1, #9CC5C3, #9DC6AD, #B0C29D, #C3BD9C,
+    #86B4AE, #8FB89E, #A5B991, #BBB492, #C9A891, #CB9995,
+    #8DACC7
+  );
+  background-position: 0% 0%;
+  background-size: 900% 900%;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes gradient-title-cycle {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradientTitle {
+    animation: none;
+  }
 }
 
 @media (width >= 1440px) { /* --qhd */
